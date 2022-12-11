@@ -1,0 +1,88 @@
+/*import normalize.css*/
+@import "normalize.scss";
+
+/*variables*/
+$bgcolor: #5A877D;
+$btncolor: #55847A;
+
+/*general styles*/
+html {
+  scroll-behavior: smooth;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+}
+
+/*main*/
+
+.main {
+  padding: 30px 10px;
+  height: 100vh;
+  text-align: center;
+  background-color: $bgcolor;
+}
+
+.title {
+  font-weight: 800;
+  font-size: 35px;
+  color: #fff;
+}
+
+.task-form {
+  margin: 30px 0;
+  padding: 10px;
+}
+
+.task-list {
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+.task-item {
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px 0 10px 30px;
+  font-weight: 700;
+  color: #55847A;
+  transition: all 0.3s ease;
+  span {
+    padding: 0 0 0 20px;
+    display: inline-block;
+  }
+  input:checked + span {
+    text-decoration: line-through;
+    color: #9C9C9C;
+    transition: all 0.3s ease;
+  }
+}
+
+
