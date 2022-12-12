@@ -21,6 +21,7 @@ function initTodoList() {
     taskObjArr = JSON.parse(localStorage.getItem('todoList'));
     taskObjArr.forEach((item) => {
         let checkedVariable = item.checked ? 'checked' : '';
+        console.log(item.task);
         taskBody.innerHTML += `<li class='task-item' id="${item.id}"><input type="checkbox" ${checkedVariable}><span contenteditable="true">${item.task}</span></li>`;
     });
     idCounter = +JSON.parse(localStorage.getItem('idCounter'));
@@ -67,11 +68,11 @@ taskBody.addEventListener('change', (event) => {
     }
 })
 taskBody.addEventListener('input', (event) => {
+    if (event.target.tagName === 'INPUT') return;
     let currentTaskId = +event.target.closest('li').id,
         taskObj = taskObjArr.find(item => {
             return item.id === currentTaskId;
         });
     taskObj.task = event.target.innerHTML;
     localStorage.setItem('todoList', JSON.stringify(taskObjArr));
-    console.log(taskObj.id)
 })
