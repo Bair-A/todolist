@@ -70,7 +70,11 @@ body {
 }
 
 .task-body {
-  
+  width:  100%;
+  overflow-x: hidden;
+  word-break: break-word;
+  padding: 20px;
+  background-color: #fff;
 }
 .task-list {
   background-color: #fff;
@@ -84,7 +88,7 @@ body {
   font-weight: 700;
   color: #55847A;
   transition: all 0.3s ease;
-  span {
+  .task-text {
     margin: 0 0 0 20px;
     display: inline-block;
   }

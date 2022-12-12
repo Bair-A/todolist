@@ -370,6 +370,14 @@ body {
   padding: 10px;
 }
 
+.task-body {
+  width: 100%;
+  overflow-x: hidden;
+  word-break: break-word;
+  padding: 20px;
+  background-color: #fff;
+}
+
 .task-list {
   background-color: #fff;
   transition: all 0.3s ease;
@@ -383,7 +391,7 @@ body {
   color: #55847A;
   transition: all 0.3s ease;
 }
-.task-item span {
+.task-item .task-text {
   margin: 0 0 0 20px;
   display: inline-block;
 }
