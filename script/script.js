@@ -21,7 +21,7 @@ function initTodoList() {
     taskObjArr = JSON.parse(localStorage.getItem('todoList'));
     taskObjArr.forEach((item) => {
         let checkedVariable = item.checked ? 'checked' : '';
-        taskBody.innerHTML += `<li class='task-item'><input type="checkbox" ${checkedVariable}><span contenteditable="true">${item.task}</span></li>`
+        taskBody.innerHTML += `<li class='task-item' id="${item.id}"><input type="checkbox" ${checkedVariable}><span contenteditable="true">${item.task}</span></li>`;
     });
     idCounter = +JSON.parse(localStorage.getItem('idCounter'));
 }
@@ -45,7 +45,6 @@ taskForm.addEventListener('click', (event) => {
         taskInput.value = '';
         localStorage.setItem('todoList', JSON.stringify(taskObjArr));
         localStorage.setItem('idCounter', JSON.stringify(idCounter));
-        console.log(taskObj)
     }
 
     if (event.target.classList.contains('clear-task-list')) {
