@@ -386,6 +386,7 @@ body {
 .task-item {
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   padding: 10px 0 10px 30px;
   font-weight: 700;
   color: #55847A;
@@ -394,6 +395,59 @@ body {
 .task-item .task-text {
   margin: 0 0 0 20px;
   display: inline-block;
+}
+.task-item .cross-body {
+  width: 25px;
+  height: 25px;
+  position: relative;
+  margin: 0 40px 0 20px;
+}
+.task-item .cross-body span {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  -webkit-transform: rotate(45deg) translate(0, -50%);
+  -moz-transform: rotate(45deg) translate(0, -50%);
+  -ms-transform: rotate(45deg) translate(0, -50%);
+  -o-transform: rotate(45deg) translate(0, -50%);
+  transform: rotate(45deg) translate(0, -50%);
+  width: 25px;
+  height: 3px;
+  border-radius: 10px;
+  background-color: #5A877D;
+  display: inline-block;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.task-item .cross-body:after {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  content: "";
+  display: inline-block;
+  -webkit-transform: rotate(-45deg) translate(0, -50%);
+  -moz-transform: rotate(-45deg) translate(0, -50%);
+  -ms-transform: rotate(-45deg) translate(0, -50%);
+  -o-transform: rotate(-45deg) translate(0, -50%);
+  transform: rotate(-45deg) translate(0, -50%);
+  width: 25px;
+  height: 3px;
+  border-radius: 10px;
+  background-color: #5A877D;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.task-item .cross-body:hover {
+  cursor: pointer;
+}
+.task-item .cross-body:hover span, .task-item .cross-body:hover:after {
+  background-color: red;
 }
 .task-item input:checked + span {
   text-decoration: line-through;

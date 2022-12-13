@@ -10,8 +10,12 @@ let taskForm = document.querySelector('.task-form'),
 initTodoList();
 
 //functions
+function setLocalStorage() {
+    localStorage.setItem('todoList', JSON.stringify(taskObjArr));
+    localStorage.setItem('idCounter', idCounter);
+}
 function getId() {
-    return idCounter++
+    return idCounter++;
 }
 function initTodoList() {
     if (localStorage.getItem('todoList') == null) {
@@ -21,9 +25,9 @@ function initTodoList() {
     taskObjArr = JSON.parse(localStorage.getItem('todoList'));
     taskObjArr.forEach((item) => {
         let checkedVariable = item.checked ? 'checked' : '';
-        taskBody.innerHTML += `<li class='task-item' id="${item.id}"><input type="checkbox" ${checkedVariable}><span class="task-text" contenteditable="true">${item.task}</span></li>`;
+        taskBody.innerHTML += `<li class='task-item' id="${item.id}"><input type="checkbox" ${checkedVariable}><span class="task-text" contenteditable="true">${item.task}</span><div class="cross-body"><span></span></div></li>`;
     });
-    idCounter = +JSON.parse(localStorage.getItem('idCounter'));
+    idCounter = +localStorage.getItem('idCounter');
 }
 function checkValidationTask(currentTask) {
     let result = taskObjArr.find((item) => item.task === currentTask);
@@ -41,10 +45,9 @@ taskForm.addEventListener('click', (event) => {
             id: getId(),
         }
         taskObjArr.push(taskObj);
-        taskBody.innerHTML += `<li class='task-item' id="${taskObj.id}"><input type="checkbox"><span class="task-text" contenteditable="true">${taskObj.task}</span></li>`
+        taskBody.innerHTML += `<li class='task-item' id="${taskObj.id}"><input type="checkbox"><span class="task-text" contenteditable="true">${taskObj.task}</span><div class="cross-body"><span></span></div></li>`
         taskInput.value = '';
-        localStorage.setItem('todoList', JSON.stringify(taskObjArr));
-        localStorage.setItem('idCounter', JSON.stringify(idCounter));
+        setLocalStorage();
     }
 
     if (event.target.classList.contains('clear-task-list')) {
@@ -64,9 +67,10 @@ taskBody.addEventListener('change', (event) => {
             });
         taskObj.checked = !taskObj.checked;
         taskObj.checked ? event.target.setAttribute('checked', 'checked') : event.target.removeAttribute('checked');
-        localStorage.setItem('todoList', JSON.stringify(taskObjArr));
+        setLocalStorage();
     }
 })
+
 taskBody.addEventListener('input', (event) => {
     if (event.target.tagName === 'INPUT') return;
     let currentTaskId = +event.target.closest('li').id,
@@ -74,5 +78,19 @@ taskBody.addEventListener('input', (event) => {
             return item.id === currentTaskId;
         });
     taskObj.task = event.target.innerHTML;
-    localStorage.setItem('todoList', JSON.stringify(taskObjArr));
+    setLocalStorage();
 })
+
+taskBody.addEventListener('click', (event) => {
+    if (event.target.classList.contains('cross-body')) {
+        let currentTask = event.target.closest('li'),
+            currentTaskId = +currentTask.id,
+            objIndex = taskObjArr.findIndex(item => {
+                return item.id === currentTaskId;
+            });
+        currentTask.remove();
+        taskObjArr.splice(objIndex, 1);
+        setLocalStorage();
+    }
+})
+
