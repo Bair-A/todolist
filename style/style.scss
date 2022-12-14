@@ -88,12 +88,20 @@ body {
   overflow-x: hidden;
   word-break: break-word;
   padding: 20px;
+  display: flex;
+  justify-content:flex-start;
+  flex-direction: column;
 }
+
 .task-list {
   background-color: rgba(255, 255, 255, 0.5);
-  transition: all 0.3s ease;
+  transition: all 1s ease;
   @include btn;
   min-height: 55px;
+  flex: 1;
+  height: auto;
+  overflow: hidden;
+  max-height: 9999px;
 }
 
 .task-item {
