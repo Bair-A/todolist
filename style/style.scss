@@ -1,9 +1,12 @@
 /*import normalize.css*/
 @import "normalize.scss";
 
-/*variables*/
-$bgcolor: #5A877D;
-$btncolor: #55847A;
+/*mixins*/
+@mixin btn {
+  padding: 5px;
+  border-radius: 9px;
+  border: 0px;
+}
 
 /*general styles*/
 html {
@@ -55,7 +58,7 @@ body {
   padding: 30px 10px;
   height: 100vh;
   text-align: center;
-  background-color: $bgcolor;
+  background: linear-gradient(#E42F2F, #1593AF);
 }
 
 .title {
@@ -67,6 +70,17 @@ body {
 .task-form {
   margin: 30px 0;
   padding: 10px;
+
+  .task-input,
+  .add-task,
+  .clear-task-list {
+    @include btn;
+  }
+
+  .task-input{
+    color: #E42F2F;
+    font-weight: 700;
+  }
 }
 
 .task-body {
@@ -74,11 +88,12 @@ body {
   overflow-x: hidden;
   word-break: break-word;
   padding: 20px;
-  background-color: #fff;
 }
 .task-list {
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.5);
   transition: all 0.3s ease;
+  @include btn;
+  min-height: 55px;
 }
 
 .task-item {
@@ -87,7 +102,7 @@ body {
   align-items: center;
   padding: 10px 0 10px 30px;
   font-weight: 700;
-  color: #55847A;
+  color: #E42F2F;
   transition: all 0.3s ease;
   .task-text {
     margin: 0 0 0 20px;
