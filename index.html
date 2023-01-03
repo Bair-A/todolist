@@ -7,22 +7,43 @@
     <title>Todolist</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style/style.css">
 </head>
 <body>
     <section class="main">
         <div class="container">
-            <h1 class="title">Todolist</h1>
-            <form class="task-form" action="#">
-                <input class="task-input" type="text" placeholder="enter new task">
-                <button class="add-task" type="submit">add task</button>
-                <button class="clear-task-list">clear task list</button>
-            </form>
-            <div class="task-body">
-                <ul class="task-list">
+            <div class="main__inner">
+                <div class="task-form-wrapper">
+                    <form class="task-form add-task-form" action="#">
+                        <div class="task-form__task-title">
+                            <label class="label-form" for="add-title-task">Task title</label>
+                            <input class="task-title-input clear-field" id="add-title-task" type="text" placeholder="enter new task">
+                        </div>
+                        <div class="task-form__task-description">
+                            <label class="label-form" for="add-task-description">Task body</label>
+                            <textarea class="task-description-input clear-field" name="textarea-task-form" id="add-task-description" cols="30" rows="10" placeholder="enter task description"></textarea>
+                        </div>
+                        <div class="form-btn-wrapper">
+                            <button class="agree-btn add-task-btn" type="submit">add task</button>
+                            <button class="reject-btn cancel-btn">clear task list</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="task-header">
+                    <h2 class="task-counter"><span>1</span> Todos</h2>
+                    <a href="#" class="delete-all-tasks">delete all tasks</a>
+                </div>
+                <div class="task-body">
+                    <ul class="task-list">
 
-                </ul>
+                    </ul>
+                </div>
+                <div class="main__add-btn-wrapper">
+                    <button class="main__add-btn">
+
+                    </button>
+                </div>
             </div>
         </div>
     </section>
